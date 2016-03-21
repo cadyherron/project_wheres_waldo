@@ -15,8 +15,8 @@ var hideDropdown = function() {
 };
 
 
-var keepTag = function(json) {
-  $('#waldo-photo').append("<div class='saved-tag' style='left: " + json.x + 'px; top: ' + json.y + "px;'> <p class='btn btn-default btn-block'>Character Name</p></div>");
+var keepTag = function(json, name) {
+  $('#waldo-photo').append("<div class='saved-tag' style='left: " + json.x + 'px; top: ' + json.y + "px;'> <p class='btn btn-default btn-block'>"+ name + "</p></div>");
 };
 
 
@@ -54,8 +54,8 @@ $(document).ready(function() {
       e.preventDefault();
       var character = e.target;
       var $target = $('.target.active.searching');
-      var left = $target.css("left").slice(0,-2) // remove px
-      var top = $target.css("top").slice(0,-2) // remove px
+      var left = $target.css("left").slice(0,-2) // removes px
+      var top = $target.css("top").slice(0,-2) // removes px
       $.post({
         url: "/tags.json",
         dataType: "json",
@@ -64,7 +64,7 @@ $(document).ready(function() {
         success: function(json) {
           hideDropdown();
           displayTarget();
-          keepTag(json);
+          keepTag(json, character.value);
         }
       });
 
