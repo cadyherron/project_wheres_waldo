@@ -15,9 +15,9 @@ var hideDropdown = function() {
 };
 
 
-var keepTag = function() {
-
-}
+var keepTag = function(json) {
+  $('#waldo-photo').append("<div class='saved-tag' style='left: " + json.x + 'px; top: ' + json.y + "px;'> <p class='btn btn-default btn-block'>Character Name</p></div>");
+};
 
 
 $(document).ready(function() {
@@ -50,17 +50,21 @@ $(document).ready(function() {
     });
 
     // clicking the button creates the tag
-    $(".button_to").on("click", function(e) {
+    $(".target").on("click", ".button_to", function(e) {
       e.preventDefault();
-      var el = e.target;
+      var character = e.target;
+      var $target = $('.target.active.searching');
+      var left = $target.css("left").slice(0,-2) // remove px
+      var top = $target.css("top").slice(0,-2) // remove px
       $.post({
         url: "/tags.json",
         dataType: "json",
         // TODO: remove hardcoded photo id
-        data: { tag: { character_id: el.id.slice(7), photo_id: 1, x: (e.pageX - 30), y: (e.pageY - 60) } },
+        data: { tag: { character_id: character.id.slice(7), photo_id: 1, x: left, y: top } },
         success: function(json) {
           hideDropdown();
           displayTarget();
+          keepTag(json);
         }
       });
 
@@ -68,3 +72,5 @@ $(document).ready(function() {
   }
 
 });
+
+// TODO: save as percentage instead of pixels

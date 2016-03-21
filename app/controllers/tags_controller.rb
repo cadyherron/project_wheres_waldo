@@ -2,11 +2,15 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.new(tag_params)
-    respond_to do |format|
-      if @tag.save
+
+    if @tag.save
+      respond_to do |format|
         format.html
-        format.json { redirect_to photo_path(@tag.photo_id) }
-      else
+        format.json { render json: @tag, status: :created }
+        format.js { render :create_success }
+      end
+    else
+      respond_to do |format|
         format.html
         format.json { redirect_to photo_path(@tag.photo_id) }
       end

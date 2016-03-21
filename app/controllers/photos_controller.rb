@@ -11,6 +11,13 @@ class PhotosController < ApplicationController
     # @photo = Photo.find(params[:id])
     @characters = Character.all  
     @tags = Tag.where(photo_id: 1)  
+
+    respond_to do |format|
+      format.html
+
+      format.json
+
+    end
   end
 
 

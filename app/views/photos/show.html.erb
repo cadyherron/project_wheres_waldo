@@ -8,7 +8,7 @@
 
       <div class="name">
         <% @characters.each do |character| %>
-          <%= button_to character.name, tags_path, {method: :post, remote: true, class: "btn btn-default btn-block", id: "button-#{character.id}" } %>
+          <%= button_to character.name, tags_path, {method: :post, class: "btn btn-default btn-block", id: "button-#{character.id}" } %>
         <% end %>
       </div>
 
@@ -20,8 +20,8 @@
     <div class="tagged-name">Nancy</div>
   </div>
 
-<% @tags.each do |tag| %>
-  <%= render partial: 'tags/tag', locals: { tag: tag } %>
-<% end %>
+  <% @tags.each do |tag| %>
+    <%= render partial: 'tags/tag', locals: { tag: tag } %>
+  <% end %>
 
 </a>
