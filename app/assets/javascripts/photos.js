@@ -66,10 +66,12 @@ $(document).ready(function() {
           hideDropdown();
           displayTarget();
           keepTag(json, character.value);
+          // $('#waldo-photo').addClass('searching');
         },
         error: function() {
           console.log("You've already tagged that character!")
           alert("You've already tagged that character!")
+          $('#waldo-photo').addClass('searching');
         }
       });
 

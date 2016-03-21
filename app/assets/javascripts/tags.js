@@ -9,9 +9,18 @@ var removeSpecificTag = function(id) {
 $(document).ready(function() {
 
 
-    $('.saved-tag').hover( 
-      function() { $('#waldo-photo').removeClass('searching') }, 
-      function () { $('#waldo-photo').addClass('searching') }
+    $('#waldo-photo').on('mouseenter', '.saved-tag',
+      function() { 
+        $('#waldo-photo').removeClass('searching');
+        $('.target').removeClass('active searching')
+      }
+      )
+
+    $('#waldo-photo').on('mouseleave', '.saved-tag',
+      function() { 
+        $('#waldo-photo').addClass('searching');
+        $('.target').addClass('active searching')
+      }
       )
 
     // click to delete a tag
