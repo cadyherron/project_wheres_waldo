@@ -16,7 +16,7 @@ var hideDropdown = function() {
 
 
 var keepTag = function(json, name) {
-  $('#waldo-photo').append("<div class='saved-tag' style='left: " + json.x + 'px; top: ' + json.y + "px;'> <p class='btn btn-default btn-block'>"+ name + "</p></div>");
+  $('#waldo-photo').append("<div class='saved-tag' data-id=" + json.id + " style='left: " + json.x + 'px; top: ' + json.y + "px;'> <p class='btn btn-default btn-block' data-id=" + json.id + ">Remove "+ name + "</p></div>");
 };
 
 
@@ -59,7 +59,6 @@ $(document).ready(function() {
       $.ajax({
         url: "/tags.json",
         type: "POST",
-
         dataType: "json",
         // TODO: remove hardcoded photo id
         data: { tag: { character_id: character.id.slice(7), photo_id: 1, x: left, y: top } },
@@ -75,6 +74,14 @@ $(document).ready(function() {
       });
 
     });
+
+
+
+
+
+
+
+
   }
 
 });

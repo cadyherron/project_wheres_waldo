@@ -17,6 +17,21 @@ class TagsController < ApplicationController
   end
 
 
+  def destroy
+    @tag = Tag.find(params[:id])
+
+    if @tag.destroy
+      respond_to do |format|
+        format.json { render json: @tag, status: 200 }
+      end
+    else
+      respond_to do |format|
+        format.json { render nothing: true, status: 400}
+      end
+    end
+  end
+
+
   private
 
   def tag_params

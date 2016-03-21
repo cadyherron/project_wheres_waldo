@@ -1,6 +1,6 @@
-<div class="saved-tag" style="left: <%= "#{tag.x}px; top: #{tag.y}px;" %>" >
+<div class="saved-tag" data-id='<%= "#{tag.id}" %>' style="left: <%= "#{tag.x}px; top: #{tag.y}px;  " %>" >
 
-<p class="btn btn-default btn-block"><%= tag.character.name %></p>
+<p class="btn btn-default btn-block" data-id="<%= "#{tag.id}" %>">Remove <%= tag.character.name %></p>
 
 
 </div>
