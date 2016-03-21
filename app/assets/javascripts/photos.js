@@ -15,7 +15,7 @@ var hideDropdown = function() {
 };
 
 
-var showTags = function() {
+var keepTag = function() {
 
 }
 
@@ -41,7 +41,6 @@ $(document).ready(function() {
     $('#waldo-photo').click(function() {
       if ($(this).hasClass('searching')) {
         $(this).removeClass('searching');
-        // $('.target').addClass('clicked');
         animateDropdown();
       } else {
         $(this).addClass('searching');
@@ -58,12 +57,13 @@ $(document).ready(function() {
         url: "/tags.json",
         dataType: "json",
         // TODO: remove hardcoded photo id
-        data: { tag: { character_id: el.id.slice(7), photo_id: 1, x: e.pageX, y: e.pageY } },
+        data: { tag: { character_id: el.id.slice(7), photo_id: 1, x: (e.pageX - 30), y: (e.pageY - 60) } },
         success: function(json) {
-          console.log("Tag was created!")
-          //showTag();
+          hideDropdown();
+          displayTarget();
         }
       });
+
     });
   }
 
