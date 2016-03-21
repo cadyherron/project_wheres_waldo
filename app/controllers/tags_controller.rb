@@ -7,7 +7,6 @@ class TagsController < ApplicationController
       respond_to do |format|
         format.html
         format.json { render json: @tag, status: :created }
-        format.js { render :create_success }
       end
     else
       respond_to do |format|

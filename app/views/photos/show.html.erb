@@ -15,11 +15,6 @@
     </div>
   </div>
 
-  <div class="tag" id='tag-prototype'>
-    <div class="delete-tag">X</div>
-    <div class="tagged-name">Nancy</div>
-  </div>
-
   <% @tags.each do |tag| %>
     <%= render partial: 'tags/tag', locals: { tag: tag } %>
   <% end %>

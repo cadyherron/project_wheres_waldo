@@ -56,8 +56,10 @@ $(document).ready(function() {
       var $target = $('.target.active.searching');
       var left = $target.css("left").slice(0,-2) // removes px
       var top = $target.css("top").slice(0,-2) // removes px
-      $.post({
+      $.ajax({
         url: "/tags.json",
+        type: "POST",
+
         dataType: "json",
         // TODO: remove hardcoded photo id
         data: { tag: { character_id: character.id.slice(7), photo_id: 1, x: left, y: top } },
@@ -65,6 +67,10 @@ $(document).ready(function() {
           hideDropdown();
           displayTarget();
           keepTag(json, character.value);
+        },
+        error: function() {
+          console.log("You've already tagged that character!")
+          alert("You've already tagged that character!")
         }
       });
 
