@@ -8,7 +8,9 @@ class PhotosController < ApplicationController
 
 
   def show
-    @characters = Character.all    
+    # @photo = Photo.find(params[:id])
+    @characters = Character.all  
+    @tags = Tag.where(photo_id: 1)  
   end
 
 

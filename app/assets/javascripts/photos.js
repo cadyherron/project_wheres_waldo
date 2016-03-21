@@ -15,6 +15,11 @@ var hideDropdown = function() {
 };
 
 
+var showTags = function() {
+
+}
+
+
 $(document).ready(function() {
 
   if ($('#photos-show').length) {
@@ -45,15 +50,17 @@ $(document).ready(function() {
       }
     });
 
+    // clicking the button creates the tag
     $(".button_to").on("click", function(e) {
       e.preventDefault();
       var el = e.target;
-      console.log(e);
       $.post({
         url: "/tags.json",
         dataType: "json",
+        // TODO: remove hardcoded photo id
         data: { tag: { character_id: el.id.slice(7), photo_id: 1, x: e.pageX, y: e.pageY } },
         success: function(json) {
+          console.log("Tag was created!")
           //showTag();
         }
       });

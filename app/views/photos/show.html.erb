@@ -20,5 +20,8 @@
     <div class="tagged-name">Nancy</div>
   </div>
 
+<% @tags.each do |tag| %>
+  <%= render partial: 'tags/tag', locals: { tag: tag } %>
+<% end %>
 
 </a>
