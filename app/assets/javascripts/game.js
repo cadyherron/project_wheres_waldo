@@ -5,10 +5,6 @@ var Game = (function() {
   var id;
   var gameOver = false;
 
-  // var getScore = function() {
-  //   return _score;
-  // };
-
   var updateScore = function() {
     if (_score === 0) {
       gameOver = true;
@@ -16,6 +12,10 @@ var Game = (function() {
       _score -= 1;
       $('.score').html("Score: " + _score);
     }
+
+  var decreaseScore = function() {
+    _score -= 1;
+    $('.score').html("Score: " + _score);
   };
 
 
@@ -34,6 +34,7 @@ var Game = (function() {
     id = setInterval( function() {
       checkForTags();
       updateScore();
+      decreaseScore();
     }, 1000)
   };
 
