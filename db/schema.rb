@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318184853) do
+ActiveRecord::Schema.define(version: 20160322023014) do
 
   create_table "characters", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "xcoord"
+    t.integer  "ycoord"
   end
 
   add_index "characters", ["name"], name: "index_characters_on_name"
